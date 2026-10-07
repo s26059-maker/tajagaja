@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- 이 문서가 HTML5 문서라는 선언 -->
+<html lang="ko">
+<!-- 문서의 언어를 한국어로 지정 (스크린리더, 번역 기능이 참고함) -->
+<head>
+  <!-- head: 화면에는 안 보이지만 페이지 설정을 담는 영역 -->
+  <meta charset="UTF-8">
+  <!-- 글자 인코딩을 UTF-8로 지정 (한글이 깨지지 않게 함) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 모바일에서 화면 너비에 맞게 보이도록 설정 -->
+  <title>타자가자</title>
+  <!-- 브라우저 탭에 표시되는 제목 -->
+  <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Do+Hyeon&display=swap" rel="stylesheet">
+  <!-- 구글 폰트에서 Gugi(제목용), Do Hyeon(본문용) 폰트를 불러옴 -->
+  <link rel="stylesheet" href="/style.css">
+  <!-- 디자인(색, 크기, 배치)을 담은 style.css 파일을 연결 -->
+</head>
+<body>
+  <!-- body: 실제로 화면에 보이는 내용이 들어가는 영역 -->
+  <div class="aurora"><i></i><i></i><i></i></div>
+  <!-- 배경에 떠다니는 구름 3개 (CSS가 모양과 움직임을 만들어줌) -->
+
+  <main class="container">
+    <!-- main: 페이지의 핵심 내용 전체를 감싸는 상자 (가운데 정렬은 CSS에서 처리) -->
+    <header class="hero">
+      <!-- header: 맨 위 소개 영역 -->
+      <span class="eyebrow">TYPING PRACTICE</span>
+      <!-- 로고 위에 붙는 작은 분홍색 라벨 -->
+      <h1>타자가자</h1>
+      <!-- 페이지의 가장 큰 제목(로고) -->
+      <p class="tagline" id="tagline"></p>
+      <!-- 로고 아래 문구 자리. 비어 있고, main.js가 타자 치듯 글자를 채워 넣음 (id로 찾아감) -->
+      <div class="chips">
+        <!-- 작은 알약 모양 태그들을 묶는 상자 -->
+        <span class="chip">실시간 정확도</span>
+        <!-- 태그 1 -->
+        <span class="chip">서버 채점</span>
+        <!-- 태그 2 -->
+        <span class="chip">내 글로 연습</span>
+        <!-- 태그 3 -->
+      </div>
+    </header>
+
+    <section class="card">
+      <!-- section: 하나의 덩어리 영역. card 클래스로 흰 카드 모양을 만듦 -->
+      <h2>연습할 글 고르기</h2>
+      <!-- 카드의 제목 -->
+      <p class="sub">마음에 드는 글을 골라 바로 시작하세요.</p>
+      <!-- 제목 아래 보조 설명 -->
+      <ul id="text-list"></ul>
+      <!-- 글 목록이 들어갈 빈 리스트. main.js가 서버에서 글을 받아와 여기에 채움 -->
+    </section>
+
+    <section class="card">
+      <!-- 두 번째 카드: 직접 글을 붙여넣는 영역 -->
+      <h2>내 글로 연습하기</h2>
+      <!-- 카드 제목 -->
+      <p class="sub">좋아하는 문장, 가사, 발표문 무엇이든 붙여넣어 보세요.</p>
+      <!-- 보조 설명 -->
+      <input id="title" placeholder="제목 (안 쓰면 '내 글')">
+      <!-- 한 줄 입력칸: 글 제목 입력. placeholder는 비어 있을 때 보이는 안내 글씨 -->
+      <textarea id="content" rows="5" placeholder="따라 칠 글을 붙여넣으세요"></textarea>
+      <!-- 여러 줄 입력칸: 연습할 글 내용 입력. rows="5"는 처음 보이는 줄 수 -->
+      <button id="add-btn">추가하고 연습하기</button>
+      <!-- 버튼: 누르면 main.js가 글을 서버에 저장하고 연습 화면으로 이동시킴 -->
+    </section>
+  </main>
+
+  <script src="/js/main.js"></script>
+  <!-- 이 페이지의 동작을 담당하는 main.js 연결. 화면 요소가 다 만들어진 뒤 실행되도록 맨 아래에 둠 -->
+</body>
+</html>

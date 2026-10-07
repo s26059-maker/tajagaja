@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- 이 문서가 HTML5 문서라는 선언 -->
+<html lang="ko">
+<!-- 문서의 언어를 한국어로 지정 -->
+<head>
+  <!-- head: 화면에 안 보이는 페이지 설정 영역 -->
+  <meta charset="UTF-8">
+  <!-- 글자 인코딩 UTF-8 (한글 깨짐 방지) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 모바일 화면 너비에 맞추는 설정 -->
+  <title>연습 - 타자가자</title>
+  <!-- 브라우저 탭 제목 -->
+  <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Do+Hyeon&display=swap" rel="stylesheet">
+  <!-- 구글 폰트 불러오기 -->
+  <link rel="stylesheet" href="/style.css">
+  <!-- 디자인 파일 style.css 연결 -->
+</head>
+<body>
+  <!-- body: 실제 화면에 보이는 영역 -->
+  <div class="aurora"><i></i><i></i><i></i></div>
+  <!-- 배경에 떠다니는 구름 3개 -->
+  <canvas id="confetti"></canvas>
+  <!-- 폭죽을 그리는 투명한 그림판. 평소엔 비어 있고 S, A 등급일 때 practice.js가 여기에 그림 -->
+
+  <main class="container">
+    <!-- 페이지 내용 전체를 감싸는 상자 -->
+    <div class="topbar"><a class="back" href="/">← 목록으로</a></div>
+    <!-- 맨 위 줄: 클릭하면 메인 페이지("/")로 돌아가는 링크 -->
+    <h1 class="title" id="title"></h1>
+    <!-- 연습 중인 글의 제목 자리. 비어 있고 practice.js가 서버에서 받은 제목을 채움 -->
+
+    <div class="progress"><div id="bar"></div></div>
+    <!-- 진행도 바. 바깥 상자(progress)가 틀이고, 안쪽 bar의 너비를 JS가 늘려서 진행률을 표시 -->
+    <p id="origin"></p>
+    <!-- 따라 쳐야 할 원문이 표시되는 자리. JS가 글자마다 맞음/틀림 색을 칠함 -->
+    <textarea id="input" rows="3" placeholder="여기에 따라 치세요" autofocus></textarea>
+    <!-- 사용자가 타이핑하는 입력칸. autofocus: 페이지가 열리면 바로 커서가 들어가 있음 -->
+
+    <div class="stats">
+      <!-- 실시간 기록 카드 3개를 묶는 상자 -->
+      <div class="stat"><b><span id="acc">0</span>%</b><small>정확도</small></div>
+      <!-- 정확도 카드: b는 큰 숫자, span#acc 안의 숫자를 JS가 계속 바꿔줌, small은 이름표 -->
+      <div class="stat"><b id="cpm">0</b><small>타수 (분당)</small></div>
+      <!-- 타수 카드: 1분 기준으로 환산한 타자 수 (JS가 갱신) -->
+      <div class="stat"><b><span id="time">0</span>초</b><small>경과 시간</small></div>
+      <!-- 경과 시간 카드: 치기 시작한 뒤 몇 초 지났는지 (JS가 갱신) -->
+    </div>
+
+    <div id="result" hidden>
+      <!-- 결과 카드. hidden 속성 때문에 처음엔 숨겨져 있다가, 다 치면 JS가 보이게 함 -->
+      <h2>RESULT</h2>
+      <!-- 결과 카드 제목 -->
+      <div class="grade" id="grade">A</div>
+      <!-- 등급(S/A/B/C/D)이 크게 표시되는 자리. 지금의 A는 임시값이고 JS가 덮어씀 -->
+      <p class="grade-msg" id="grade-msg"></p>
+      <!-- 등급 옆 응원 메시지 자리 (JS가 채움) -->
+      <div class="result-grid">
+        <!-- 최종 결과 3칸을 묶는 상자 -->
+        <div><b><span id="r-acc">0</span>%</b><small>정확도</small></div>
+        <!-- 서버가 계산한 최종 정확도 -->
+        <div><b id="r-cpm">0</b><small>타수</small></div>
+        <!-- 서버가 계산한 최종 타수 -->
+        <div><b id="r-typo">0</b><small>오타(개)</small></div>
+        <!-- 서버가 센 오타 개수 -->
+      </div>
+      <button onclick="location.reload()">다시 하기</button>
+      <!-- 누르면 페이지를 새로고침해서 처음부터 다시 연습 (onclick: 클릭했을 때 실행할 코드) -->
+    </div>
+  </main>
+
+  <script src="/js/practice.js"></script>
+  <!-- 이 페이지의 동작을 담당하는 practice.js 연결 (요소들이 다 만들어진 뒤 실행되도록 맨 아래) -->
+</body>
+</html>
