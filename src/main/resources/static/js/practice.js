@@ -29,9 +29,11 @@ function render(typed) {
   // 조합 중이면 마지막 글자는 아직 완성 전이므로 판정에서 뺌
   const judged = composing ? typed.slice(0, -1) : typed;
   let bad = 0;
+  // 이모지 등 2칸짜리 글자도 한 글자로 비교하도록 글자 배열로 바꿔서 비교
+  const j = [...judged];
   originEl.innerHTML = [...origin].map((ch, i) => {
-    if (i >= judged.length) return esc(ch);
-    const same = judged[i] === ch;
+    if (i >= j.length) return esc(ch);
+    const same = j[i] === ch;
     if (!same) bad++;
     return `<span class="${same ? 'ok' : 'bad'}">${esc(ch)}</span>`;
   }).join('');

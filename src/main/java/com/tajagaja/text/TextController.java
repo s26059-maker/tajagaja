@@ -41,5 +41,17 @@ public class TextController {
         return repository.save(id -> CustomText.of(id, req.title(), req.content()));
     }
 
+    // DELETE /api/texts/{id} : 내가 붙여넣은 글(CUSTOM)만 삭제. 없으면 404, 기본 글이면 403
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        TypingText text = repository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "글이 없어요"));
+        if (!"CUSTOM".equals(text.getCategory())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "기본 글은 삭제할 수 없어요");
+        }
+        repository.deleteById(id);
+    }
+
     public record AddTextRequest(String title, String content) {}
 }

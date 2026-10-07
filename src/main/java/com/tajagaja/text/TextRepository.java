@@ -42,4 +42,9 @@ public class TextRepository {
     public Optional<TypingText> findById(Long id) {
         return Optional.ofNullable(store.get(id));
     }
+
+    // 번호로 글을 삭제. 실제로 지워졌으면 true, 없던 글이면 false
+    public boolean deleteById(Long id) {
+        return store.remove(id) != null;
+    }
 }

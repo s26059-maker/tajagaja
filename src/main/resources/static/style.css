@@ -1,4 +1,12 @@
 /* 밝고 알록달록한 모바일 게임 느낌: 하늘색 배경 + 굵은 보라 외곽선 + 통통 튀는 파스텔 */
+/* Do Hyeon에 없는 드문 한글(예: 윴)은 대체 글꼴로 그려지는데, 크기가 달라 깨져 보임 → 크기를 Do Hyeon에 맞춘 대체 글꼴을 뒤에 둔다 */
+@font-face {
+  font-family: "KR Fallback";
+  src: local("Malgun Gothic"), local("Apple SD Gothic Neo"), local("Noto Sans KR");
+  size-adjust: 90%;
+  ascent-override: 95%; descent-override: 25%; line-gap-override: 0%;
+}
+
 :root {
   --ink: #2b1b52;
   --sky1: #6fd2ff;
@@ -24,7 +32,7 @@ body {
   background: linear-gradient(var(--sky1), var(--sky2) 70%, #fff3d6);
   background-attachment: fixed;
   color: var(--text);
-  font-family: "Do Hyeon", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  font-family: "Do Hyeon", "KR Fallback", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.55;
   overflow-x: hidden;
@@ -141,6 +149,13 @@ body::before {
   color: var(--ink); background: #fff; border: 2px solid var(--ink); border-radius: 999px;
 }
 .badge.custom { background: #ffe94d; }
+#text-list li { position: relative; }
+.del-btn {
+  position: absolute; top: 8px; right: 8px; z-index: 1;
+  width: 28px; height: 28px; padding: 0; line-height: 1; font-size: .9rem; cursor: pointer;
+  color: var(--ink); background: #fff; border: 2px solid var(--ink); border-radius: 50%;
+}
+.del-btn:hover { color: #fff; background: var(--bad); }
 .empty { grid-column: 1 / -1; color: var(--muted); text-align: center; padding: 18px; }
 
 /* ---------- 폼 ---------- */
@@ -197,7 +212,7 @@ button:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--ink); }
 }
 #origin span { border-radius: 4px; }
 .ok { color: var(--ok); }
-.bad { color: var(--bad); background: #ffd9e0; text-decoration: underline wavy; }
+.bad { color: var(--bad); background: #ffd9e0; text-decoration: underline; text-decoration-color: var(--bad); text-underline-offset: 6px; }
 #origin.shake { animation: shake .25s; }
 @keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 
@@ -214,6 +229,10 @@ button:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--ink); }
 .stat b {
   display: block; font-family: "Gugi", sans-serif; font-weight: 400; font-size: 2rem; line-height: 1.25; font-variant-numeric: tabular-nums;
   color: #fff; -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; text-shadow: 0 3px 0 var(--ink);
+}
+.stat .unit {
+  margin-left: 2px; font-family: "Do Hyeon", "Malgun Gothic", sans-serif; font-size: 1.4rem; -webkit-text-stroke: 0;
+  text-shadow: -2px -2px 0 var(--ink), 2px -2px 0 var(--ink), -2px 2px 0 var(--ink), 2px 2px 0 var(--ink), 0 3px 0 var(--ink);
 }
 .stat small { font-size: .95rem; color: var(--ink); }
 

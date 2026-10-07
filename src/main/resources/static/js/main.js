@@ -32,6 +32,21 @@ async function loadTexts() {
     foot.append(badge, arrow);
     a.append(name, foot);
     li.appendChild(a);
+    // 내 글(CUSTOM)에만 삭제 버튼 표시. 기본 글은 서버도 삭제를 막는다.
+    if (custom) {
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'del-btn';
+      del.title = '삭제';
+      del.textContent = '✕';
+      del.addEventListener('click', async () => {
+        if (!confirm(`"${t.title}" 글을 삭제할까요?`)) return;
+        const r = await fetch(`/api/texts/${t.id}`, { method: 'DELETE' });
+        if (!r.ok && r.status !== 404) return alert('삭제하지 못했어요');
+        loadTexts();
+      });
+      li.appendChild(del);
+    }
     list.appendChild(li);
   });
 }

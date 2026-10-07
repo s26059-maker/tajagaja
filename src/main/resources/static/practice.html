@@ -38,11 +38,11 @@
 
     <div class="stats">
       <!-- 실시간 기록 카드 3개를 묶는 상자 -->
-      <div class="stat"><b><span id="acc">0</span>%</b><small>정확도</small></div>
+      <div class="stat"><b><span id="acc">0</span><span class="unit">%</span></b><small>정확도</small></div>
       <!-- 정확도 카드: b는 큰 숫자, span#acc 안의 숫자를 JS가 계속 바꿔줌, small은 이름표 -->
       <div class="stat"><b id="cpm">0</b><small>타수 (분당)</small></div>
       <!-- 타수 카드: 1분 기준으로 환산한 타자 수 (JS가 갱신) -->
-      <div class="stat"><b><span id="time">0</span>초</b><small>경과 시간</small></div>
+      <div class="stat"><b><span id="time">0</span><span class="unit">초</span></b><small>경과 시간</small></div>
       <!-- 경과 시간 카드: 치기 시작한 뒤 몇 초 지났는지 (JS가 갱신) -->
     </div>
 
