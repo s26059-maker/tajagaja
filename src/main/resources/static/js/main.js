@@ -8,7 +8,7 @@ async function loadTexts() {
   list.innerHTML = '';
   if (!texts.length) list.innerHTML = '<li class="empty">아직 글이 없어요. 아래에서 추가해보세요!</li>';
   texts.forEach((t, i) => {
-    // category는 서버의 SongText/CustomText가 정해서 내려준 값 → 뱃지 구분에 사용
+    // category는 서버의 TypingText/CustomText가 정해서 내려준 값 → 뱃지 구분에 사용
     const custom = t.category === 'CUSTOM';
     const li = document.createElement('li');
     // 카드가 순서대로 차례차례 나타나는 효과용 값 (CSS의 --i)

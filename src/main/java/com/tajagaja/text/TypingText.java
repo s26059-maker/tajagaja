@@ -1,13 +1,12 @@
 package com.tajagaja.text;
 
 /*
- * [상속] 부모 클래스
- * - abstract: 이 클래스로 직접 new 할 수 없고, 자식(SongText, CustomText)을 통해서만 만들어진다.
+ * [상속] 부모 클래스 = 기본 제공 글(노래 가사)
  * - 모든 글이 똑같이 쓰는 것(id/제목/내용 필드, 채점 로직)을 여기에 한 번만 작성한다.
- *   → 자식은 코드를 다시 쓰지 않아도 그대로 물려받으므로, 기본 글과 붙여넣은 글이 항상 같은 방식으로 채점된다.
- * - 자식마다 달라야 하는 것(분류)은 abstract 메서드로 남겨서 자식이 반드시 구현하도록 강제한다.
+ *   → 자식(CustomText)은 코드를 다시 쓰지 않아도 그대로 물려받으므로, 기본 글과 붙여넣은 글이 항상 같은 방식으로 채점된다.
+ * - 이 클래스를 그대로 new 하면 노래 글("SONG")이 되고, 분류가 다른 자식은 getCategory()를 덮어쓴다.
  */
-public abstract class TypingText {
+public class TypingText {
 
     private final Long id;
     private final String title;
@@ -25,8 +24,8 @@ public abstract class TypingText {
     public String getTitle() { return title; }
     public String getContent() { return content; }
 
-    // [상속] 자식이 반드시 덮어써서(@Override) 구현해야 하는 메서드. 화면의 "기본"/"내 글" 뱃지 구분에 쓰인다.
-    public abstract String getCategory();
+    // [상속] 화면의 "기본"/"내 글" 뱃지 구분에 쓰인다. 기본값은 노래 글이고, 자식(CustomText)이 덮어쓴다.
+    public String getCategory() { return "SONG"; }
 
     // ---- 공통 채점 로직: 자식이 그대로 물려받아 사용 ----
 

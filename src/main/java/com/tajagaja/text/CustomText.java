@@ -2,7 +2,7 @@ package com.tajagaja.text;
 
 /*
  * [상속] 자식 클래스 2: 사용자가 붙여넣은 글
- * - 채점 로직은 SongText와 똑같이 부모(TypingText)에서 물려받는다. → 붙여넣은 글에도 동일한 채점이 적용되는 이유
+ * - 채점 로직은 노래 글과 똑같이 부모(TypingText)에서 물려받는다. → 붙여넣은 글에도 동일한 채점이 적용되는 이유
  * - 부모와 다른 점만 이 클래스에 둔다: 분류 "CUSTOM", 붙여넣은 글 전용 정리 규칙(공백 정리, 제목 기본값)
  */
 public class CustomText extends TypingText {

@@ -24,8 +24,8 @@ public class ResultController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "글이 없어요"));
         String typed = req.typed() == null ? "" : req.typed();
 
-        // [상속 활용] text가 SongText인지 CustomText인지 구분하지 않는다.
-        // 둘 다 부모(TypingText)의 채점 메서드를 물려받았기 때문에 같은 코드로 채점된다.
+        // [상속 활용] text가 노래 글인지 CustomText인지 구분하지 않는다.
+        // CustomText는 부모(TypingText)의 채점 메서드를 물려받았기 때문에 같은 코드로 채점된다.
         return new ResultDto.Response(
                 text.accuracy(typed),
                 text.cpm(typed, req.elapsedMs()),
