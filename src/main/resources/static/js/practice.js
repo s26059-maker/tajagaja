@@ -58,6 +58,9 @@ function startTimer() {
   }, 250);
 }
 
+input.addEventListener('paste', e => e.preventDefault());
+input.addEventListener('drop', e => e.preventDefault());
+
 input.addEventListener('compositionstart', () => composing = true);
 input.addEventListener('compositionend', () => { composing = false; render(input.value); });
 
