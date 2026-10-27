@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
 
+// DB 없이 메모리(Map)에 글을 저장하는 저장소. 부모 타입 TypingText로 SONG/CUSTOM을 함께 보관
 @Repository
 public class TextRepository {
 
@@ -19,6 +20,7 @@ public class TextRepository {
         save(id -> new TypingText(id, "이방인","파도는 낮게, 또 크게 부서지며 인간의 말을 흉내내듯 울부짖었다. 그 기괴한 음성 속에서 나는 오래전 잃어버린 누군가의 이름을 들은 것 같았다. 바다는 끊임없이 무언가를 뱉어내려 했지만, 해안가에 남은 것은 거품처럼 허망하게 스러지는 침묵뿐이었다."));
     }
 
+    // id를 먼저 발급받고 그 id로 글 객체를 만들도록 Function을 받는다
     public TypingText save(Function<Long, TypingText> factory) {
         long id = seq.incrementAndGet();
         TypingText text = factory.apply(id);
