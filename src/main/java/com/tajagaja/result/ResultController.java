@@ -8,6 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/results")
+// 채점 API. 서버에 저장된 원문과 비교해 결과 계산
 public class ResultController {
 
     private final TextRepository repository;

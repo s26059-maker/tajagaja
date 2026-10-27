@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/texts")
+// 글 목록/조회/추가/삭제 API
 public class TextController {
 
     private final TextRepository repository;
@@ -40,6 +41,7 @@ public class TextController {
     public void delete(@PathVariable Long id) {
         TypingText text = repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "글이 없어요"));
+        // 기본 글(SONG)은 삭제 불가
         if (!"CUSTOM".equals(text.getCategory())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "기본 글은 삭제할 수 없어요");
         }
